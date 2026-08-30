@@ -1,6 +1,11 @@
 name: Docker Publish
 
 on:
+  # Pushing to the production branch publishes new images for the server.
+  # This is the promotion step: merge dev -> production, and the images the
+  # unraid server pulls are rebuilt from that code.
+  push:
+    branches: [production]
   release:
     types: [published]
   workflow_call:
